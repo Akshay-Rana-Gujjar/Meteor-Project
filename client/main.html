@@ -3,20 +3,58 @@
 </head>
 
 <body>
-  <div class="container">
-    
-    <h1>Welcome to Meteor!</h1>
-      <ul class="collection">
-    {{#each notes}} 
-    {{> note}}
-    {{/each}}
+
+  <nav class="blue-grey">
+    <div class="nav-wrapper container">
+      <a href="#" class="brand-logo">ARG-Developers</a>
+      <ul id="nav-mobile" class="right hide-on-med-and-down">
+        <li><a class="waves-effect waves-light btn modal-trigger pink accent-1" href="#addNotes">Add Notes</a></li>
+
       </ul>
+    </div>
+  </nav>
+  <div class="container">
+
+    <h1>Welcome to Meteor!</h1>
+    <ul class="collection">
+      {{#each notes}} {{> note}} {{/each}}
+    </ul>
   </div>
+
+
+  {{> add}}
+
+  <script>
+    $(document).ready(function () {
+      // the "href" attribute of the modal trigger must specify the modal ID that wants to be triggered
+      $('.modal').modal({
+        inDuration: 200, // Transition in duration
+      outDuration: 100, // Transition out duration
+      });
+    });
+
+  </script>
 </body>
 
 <template name="note">
   <li class="collection-item">{{text}}</li>
 
 
+
+</template>
+
+<template name="add">
+
+  <!-- Modal Structure -->
+  <div id="addNotes" class="modal">
+    <div class="modal-content">
+        <form class="add-form">
+          <div class="input-field col s12">
+          <input id="last_name" type="text">
+          <label for="last_name">Add Notes</label>
+        </div>
+      </form>
+      </div>
+    </div>
 
 </template>
