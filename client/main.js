@@ -6,7 +6,7 @@ import {Account} from 'meteor/accounts-base';
 //  Account configuration
 
 Accounts.ui.config({
-  passwordSignupFields :'USERNAME_ONLY'
+  passwordSignupFields :'USERNAME_ONLY',
 });
 
 import './main.html';
@@ -60,7 +60,7 @@ Template.note.events({
 
     
     if(this.owner !== Meteor.userId()){
-      Materialize.toast('Un-Authorized Request', 3000,'rounded red');
+      Materialize.toast('Un-Authorized Request', 2000,'rounded red lighten-2');
       return;
     }
 

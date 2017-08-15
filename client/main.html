@@ -1,23 +1,29 @@
 <head>
   <title>MeteorApp</title>
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-</head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+</head>
 <body>
 
-  <nav class="blue-grey">
+  <nav class="blue-grey nav-extended">
     <div class="nav-wrapper container">
-      <a href="#" class="brand-logo">ARG-Developers</a>
-      <ul id="nav-mobile" class="right hide-on-med-and-down">
-        {{#if currentUser}}
-    
-        <li><a class="waves-effect waves-light btn modal-trigger pink accent-1" href="#addNotes">Add Notes</a></li>
-        {{/if}}
-        <li>{{> loginButtons}}</li>
-
-      </ul>
+        <a href="#" class="brand-logo">ARG-Developers</a>
     </div>
+    <div class=" row nav-content">
+
+        <div class="col s6 m6">Hello : {{> loginButtons}}</div>
+        {{#if currentUser}}
+
+        <div class="col s6 m6">
+          <a class="waves-effect waves-light btn-floating btn-large modal-trigger pink lighten-2 right" href="#addNotes"><i class="material-icons">add</i></a>
+        
+        </div>
+        {{/if}}
+        
+      </div>
   </nav>
+  
   <div class="container">
 
     <h3>Welcome to Note Manager!</h3>
@@ -35,6 +41,14 @@
 
   {{> add}}
 
+  {{> footer}}
+
+<style>
+  /* .accounts-dialog {
+    display: block;
+
+  } */
+</style>
   <script>
     $(document).ready(function () {
       // the "href" attribute of the modal trigger must specify the modal ID that wants to be triggered
@@ -42,6 +56,13 @@
         inDuration: 200, // Transition in duration
         outDuration: 100, // Transition out duration
       });
+
+      $('.Msignout').click(function(){
+        $('#login-buttons-logout').click();
+      });
+      
+      // $('#login-sign-in-link').click();
+      
     });
   </script>
 </body>
@@ -74,5 +95,25 @@
       </form>
     </div>
   </div>
+
+</template>
+
+<template name="footer">
+  <footer class="page-footer blue-grey darken-3">
+      <div class="row">
+        <div class="col l6 s12">
+          <h5 class="white-text">ARG-Developers</h5>
+          <p class="grey-text text-lighten-4">Next level Developers.</p>
+        </div>
+
+      </div>
+    <div class="footer-copyright">
+      <div class="container">
+        © 2017 Copyright Text
+        <a class="grey-text text-lighten-4 right" href="#!">More Links</a>
+      </div>
+    </div>
+  </footer>
+
 
 </template>
