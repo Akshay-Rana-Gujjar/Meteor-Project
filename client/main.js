@@ -18,8 +18,35 @@ Template.body.helpers({
 });
 Template.add.events({
   'submit .add-form':function(){
-    console.log("123");
+    event.preventDefault();
+    // get input vaue
+    const target = event.target;
+    const inputValue = target.text.value;
+
+    console.log(inputValue);
+
+    //insert value to DB
+    Notes.insert({
+      text:inputValue
+    });
+
+    // set value to empty
+    target.text.value = '';
+
+    $('#addNotes').modal('close')
+    
+
 
     return false;
   }
+});
+
+Template.note.events({
+  "click .delete-note": function(){
+    Notes.remove(this._id);
+    return false;
+
+  }
+
+
 });

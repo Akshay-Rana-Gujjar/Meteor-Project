@@ -1,1 +1,7 @@
 /* CSS declarations go here */
+.material-icons{
+    color: grey;
+}
+.material-icons:hover{
+    color:#6C6C6C;
+}
