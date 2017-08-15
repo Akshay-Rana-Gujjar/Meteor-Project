@@ -1,6 +1,6 @@
 import { Template } from 'meteor/templating';
 import {Notes} from '../lib/collection.js';
-import {Acoount} from 'meteor/accounts-base';
+import {Account} from 'meteor/accounts-base';
 
 
 //  Account configuration
@@ -33,11 +33,15 @@ Template.add.events({
 
 
     //insert value to DB
-    Notes.insert({
-      text:inputValue,
-      owner : Meteor.userId(),
-      username : Meteor.user().username
-    });
+    // Notes.insert({
+    //   text:inputValue,
+    //   owner : Meteor.userId(),
+    //   username : Meteor.user().username
+    // });
+
+    // call method from collection.js to insert data
+    Meteor.call('notes.insert',inputValue);
+
 
     // set value to empty
     target.text.value = '';
@@ -51,8 +55,19 @@ Template.add.events({
 });
 
 Template.note.events({
+  // delete action perform
   "click .delete-note": function(){
-    Notes.remove(this._id);
+
+    
+    if(this.owner !== Meteor.userId()){
+      Materialize.toast('Un-Authorized Request', 3000,'rounded red');
+      return;
+    }
+
+    const returnCallback = Meteor.call('notes.remove',this);
+    
+
+    // Notes.remove(this._id);
     return false;
 
   }
