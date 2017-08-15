@@ -1,5 +1,13 @@
 import { Template } from 'meteor/templating';
 import {Notes} from '../lib/collection.js';
+import {Acoount} from 'meteor/accounts-base';
+
+
+//  Account configuration
+
+Accounts.ui.config({
+  passwordSignupFields :'USERNAME_ONLY'
+});
 
 import './main.html';
 
@@ -23,11 +31,12 @@ Template.add.events({
     const target = event.target;
     const inputValue = target.text.value;
 
-    console.log(inputValue);
 
     //insert value to DB
     Notes.insert({
-      text:inputValue
+      text:inputValue,
+      owner : Meteor.userId(),
+      username : Meteor.user().username
     });
 
     // set value to empty
