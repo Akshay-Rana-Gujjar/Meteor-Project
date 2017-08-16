@@ -1,6 +1,6 @@
 <head>
   <title>MeteorApp</title>
-  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link href="font awesome/css/font-awesome.min.css" rel="stylesheet">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 </head>
@@ -24,7 +24,7 @@
     <div class="action-btn">
 
 
-      <a class="btn-floating btn-large modal-trigger pink lighten-2 right" href="#addNotes"><i class="material-icons">add</i></a>
+      <a class="btn-floating btn-large modal-trigger pink lighten-2 right" href="#addNotes"><i class="fa fa-plus"></i></a>
     </div>
     <!-- </div> -->
     {{/if}}
@@ -45,7 +45,9 @@
   </div>
 
 
-  {{> add}} {{> footer}}
+  {{> add}}
+  {{> edit}}
+  {{> footer}}
 
   <style>
     /* .accounts-dialog {
@@ -68,7 +70,10 @@
 
 <template name="note">
   <li class="collection-item">
-    <a href="#" class="delete-note secondary-content btn-small btn-floating grey waves-effect"><i class="material-icons" >delete</i></a>
+    <span class="secondary-content">
+    <a href="#" class="edit-note btn-small btn-floating  grey waves-effect"><i class="fa fa-pencil" ></i></a>
+    <a href="#" class="delete-note btn-small btn-floating  grey waves-effect"><i class="fa fa-times" ></i></a>
+    </span>
     <h5>{{text}}</h5> <small> added by <strong class="chip">{{username}}</strong></small>
 
 
@@ -85,9 +90,27 @@
     <div class="modal-content">
       <form class="add-form">
         <div class="input-field col s12">
-          <input id="last_name" type="text" name="text">
+          <input id="add_new_note" type="text" name="text">
 
-          <label for="last_name">Add Notes</label>
+          <label for="add_new_note">Add Notes</label>
+
+
+        </div>
+      </form>
+    </div>
+  </div>
+
+</template>
+<template name="edit">
+
+  <!-- Modal Structure -->
+  <div id="editNotes" class="modal">
+    <div class="modal-content">
+      <form class="edit-form">
+        <div class="input-field col s12">
+          <input id="note_input" type="text" name="text">
+
+          <label class="active" for="note_input">Add Notes</label>
 
 
         </div>

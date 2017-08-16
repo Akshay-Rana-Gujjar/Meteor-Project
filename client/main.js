@@ -2,7 +2,7 @@ import { Template } from 'meteor/templating';
 import {Notes} from '../lib/collection.js';
 import {Account} from 'meteor/accounts-base';
 
-
+let noteData;
 //  Account configuration
 
 Accounts.ui.config({
@@ -70,7 +70,47 @@ Template.note.events({
     // Notes.remove(this._id);
     return false;
 
-  }
+  },
 
+  "click .edit-note": function(){
+    
+        
+        if(this.owner !== Meteor.userId()){
+          Materialize.toast('Un-Authorized Request', 2000,'rounded red lighten-2');
+          return;
+        }
+        noteData = this;
+        $('#editNotes').modal('open')
+        $('#note_input').val(this.text);
+        Materialize.updateTextFields();
+        
+    
+        // Notes.remove(this._id);
+        return false;
+    
+      }
+
+});
+Template.edit.events({
+  'submit .edit-form':function(){
+    event.preventDefault();
+    // get input vaue
+    const target = event.target;
+    const inputValue = target.text.value;
+
+
+    // call method from collection.js to delete data
+    Meteor.call('notes.update',noteData,inputValue);
+
+
+    // set value to empty
+    target.text.value = '';
+
+    $('#editNotes').modal('close')
+    
+
+
+    return false;
+  }
 
 });
