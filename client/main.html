@@ -1,29 +1,35 @@
 <head>
   <title>MeteorApp</title>
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 </head>
+
 <body>
 
   <nav class="blue-grey nav-extended">
     <div class="nav-wrapper container">
-        <a href="#" class="brand-logo">ARG-Developers</a>
+      <a href="#" class="brand-logo">ARG-Developers</a>
     </div>
     <div class=" row nav-content">
+      <div class="col s6 m6">
+        {{#if currentUser}} Hello : {{/if}} {{> loginButtons}}</div>
 
-        <div class="col s6 m6">Hello : {{> loginButtons}}</div>
-        {{#if currentUser}}
 
-        <div class="col s6 m6">
-          <a class="waves-effect waves-light btn-floating btn-large modal-trigger pink lighten-2 right" href="#addNotes"><i class="material-icons">add</i></a>
-        
-        </div>
-        {{/if}}
-        
-      </div>
+    </div>
+
+    {{#if currentUser}}
+
+    <!-- <div class=" "> -->
+    <div class="action-btn">
+
+
+      <a class="btn-floating btn-large modal-trigger pink lighten-2 right" href="#addNotes"><i class="material-icons">add</i></a>
+    </div>
+    <!-- </div> -->
+    {{/if}}
   </nav>
-  
+
   <div class="container">
 
     <h3>Welcome to Note Manager!</h3>
@@ -39,16 +45,14 @@
   </div>
 
 
-  {{> add}}
+  {{> add}} {{> footer}}
 
-  {{> footer}}
-
-<style>
-  /* .accounts-dialog {
+  <style>
+    /* .accounts-dialog {
     display: block;
 
   } */
-</style>
+  </style>
   <script>
     $(document).ready(function () {
       // the "href" attribute of the modal trigger must specify the modal ID that wants to be triggered
@@ -57,21 +61,16 @@
         outDuration: 100, // Transition out duration
       });
 
-      $('.Msignout').click(function(){
-        $('#login-buttons-logout').click();
-      });
-      
-      // $('#login-sign-in-link').click();
-      
+
     });
   </script>
 </body>
 
 <template name="note">
   <li class="collection-item">
-      <a href="#" class="delete-note secondary-content btn-small btn-floating grey waves-effect"><i class="material-icons" >delete</i></a>
+    <a href="#" class="delete-note secondary-content btn-small btn-floating grey waves-effect"><i class="material-icons" >delete</i></a>
     <h5>{{text}}</h5> <small> added by <strong class="chip">{{username}}</strong></small>
-    
+
 
   </li>
 
@@ -100,13 +99,13 @@
 
 <template name="footer">
   <footer class="page-footer blue-grey darken-3">
-      <div class="row">
-        <div class="col l6 s12">
-          <h5 class="white-text">ARG-Developers</h5>
-          <p class="grey-text text-lighten-4">Next level Developers.</p>
-        </div>
-
+    <div class="row">
+      <div class="col l6 s12">
+        <h5 class="white-text">ARG-Developers</h5>
+        <p class="grey-text text-lighten-4">Next level Developers.</p>
       </div>
+
+    </div>
     <div class="footer-copyright">
       <div class="container">
         © 2017 Copyright Text

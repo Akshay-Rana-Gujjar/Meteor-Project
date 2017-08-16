@@ -5,3 +5,36 @@
 .delete-note:hover{
     color:#6C6C6C;
 }
+.action-btn{
+    top:50px;
+    right: 24px;
+    position:fixed;
+}
+@media only screen and (max-width: 992px) {
+
+    .action-btn{
+        top:42px;
+        position:absolute;
+    }
+
+}
+@media only screen and (max-width: 380px) and (min-width: 350px) {
+    
+    .action-btn{
+        top:58px;
+        position:absolute;
+    }
+    
+    }
+
+    @media only screen and (max-width: 350px){
+
+        .action-btn{
+            top:57px;
+            position:absolute;
+        }
+        
+        }
+
+
+    }        
